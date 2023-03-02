@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form Validation  JavaScript Form Handling
+</title>
+</head>
+<body>
+    <h1>JavaScript Form Validation and Form Handling</h1>
+    <h2 id="msg" style="color:red"></h2>
+    <form action="" name="regForm" method="GET">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="FullName"></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+
+
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" name="ConPassword"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submitBtn"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <script>
+        var regForm = document.forms['regForm'];
+        var msg = document.querySelector('#msg');
+        regForm.onsubmit = function(event){
+            event.preventDefault();
+            console.log(regForm['FullName'].value);
+            console.log(regForm['email'].value);
+            console.log(regForm['password'].value);
+
+            
+            if(regForm['password'].value !== regForm['ConPassword'].value){
+                msg.innerHTML ="Pasword Does\'t Match!!";
+            }
+            else if(regForm['password'].value.length < 8){
+                msg.innerHTML = "Password length must be 8 ";
+            }
+            else{
+                msg.innerHTML ="Submitted Successfully!!";
+            }
+            
+            
+        }
+    </script>
+</body>
+</html>
